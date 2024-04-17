@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Button from './UI/Button';
 
 const SingleView = (props) => {
   const {selectedItem, setSelectedItem} = props;
@@ -7,33 +8,41 @@ const SingleView = (props) => {
   };
   return (
     <>
-      <dialog open={!!selectedItem}>
+      <dialog
+        open={!!selectedItem}
+      >
         <p>
-          <button onClick={handleClick}>Close</button>
+          <Button text="Close" handleClick={handleClick} />
         </p>
         {selectedItem && (
           <>
-            {
-              selectedItem.media_type.includes('video') ?
-                <video controls>
-                  <source src={selectedItem.filename} type={selectedItem.media_type}/>
-                </video> :
-                <img src={selectedItem.filename} alt={selectedItem.title}/>
-            }
+            {selectedItem.media_type.includes('video') ? (
+              <video controls>
+                <source
+                  src={selectedItem.filename}
+                  type={selectedItem.media_type}
+                />
+              </video>
+            ) : (
+              <img
+                src={selectedItem.filename}
+                alt={selectedItem.title}
+              />
+            )}
             <h2>{selectedItem.title}</h2>
-            <p>{new Date(selectedItem.created_at).toLocaleString('fi-FI')}</p>
-            <p>{selectedItem.filesize}</p>
-            <p>{selectedItem.media_type}</p>
+            <p>{selectedItem.description}</p>
+            <p>Created: {new Date(selectedItem.created_at).toLocaleString()}</p>
+            <p>Size: {selectedItem.filesize}</p>
           </>
         )}
       </dialog>
     </>
   );
-}
+};
 
 SingleView.propTypes = {
   selectedItem: PropTypes.object,
-  setSelectedItem: PropTypes.func,
+  setSelectedItem: PropTypes.func.isRequired,
 };
 
 export default SingleView;
