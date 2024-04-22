@@ -10,7 +10,7 @@ import Logout from "./views/Logout.jsx";
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

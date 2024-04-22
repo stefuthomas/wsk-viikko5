@@ -1,9 +1,9 @@
 import useForm from "../hooks/FormHooks.js";
-import {useAuthentication} from "../hooks/ApiHooks.js";
+import { useUser} from "../hooks/ApiHooks.js";
 import Button from "./UI/Button.jsx";
 
 const RegisterForm = () => {
-  const {register} = useAuthentication();
+  const {register} = useUser();
   const initValues = {
     username: "",
     password: "",
