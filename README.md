@@ -1,1 +1,1 @@
-Open [this](https://users.metropolia.fi/~stefanot/wsk-routing/) to view it in the browser.
+Open [this](https://users.metropolia.fi/~stefanot/custom-hooks/) to view it in the browser.
