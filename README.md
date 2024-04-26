@@ -1,1 +1,1 @@
-Open [this](https://users.metropolia.fi/~stefanot/context/profile) to view it in the browser.
+Open [this](https://users.metropolia.fi/~stefanot/context/) to view it in the browser.
