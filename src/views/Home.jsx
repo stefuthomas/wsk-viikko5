@@ -1,19 +1,24 @@
-import MediaRow from '../components/MediaRow.jsx';
-import {useMedia} from "../hooks/ApiHooks.js";
+import MediaRow from '../components/MediaRow';
+import UserData from '../components/UserData';
+import {useMedia} from '../hooks/ApiHooks';
 
 const Home = () => {
-  //const [selectedItem, setSelectedItem] = useState(null);
+  // const [selectedItem, setSelectedItem] = useState(null);
 
   const {mediaArray} = useMedia();
 
   return (
     <>
+
+      <UserData />
+
+
       <h2>My Media</h2>
       <table>
         <thead>
         <tr>
           <th>Thumbnail</th>
-          <th>User</th>
+          <th>Owner</th>
           <th>Title</th>
           <th>Description</th>
           <th>Created</th>

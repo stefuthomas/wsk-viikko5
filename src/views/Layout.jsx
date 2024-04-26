@@ -1,23 +1,27 @@
-import { Link, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom";
+import SiteNavigation from "../components/SiteNavigation.jsx";
+import { useUserContext } from "../contexts/UserContext.jsx";
+import { useEffect } from "react";
 
-const Layout = () => (
-  <div>
-    <header>
-      <nav>
-        <Link to="/">Etusivu</Link>
-        <Link to="/profile">Profiili</Link>
-        <Link to="/upload">Upload</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/logout">Logout</Link>
-      </nav>
-    </header>
-    <main>
-      <Outlet />
-    </main>
-    <footer>
-      Copyright 2024
-    </footer>
-  </div>
-)
+const Layout = () => {
+  const { handleAutoLogin } = useUserContext();
 
-export default Layout
+  useEffect(() => {
+    handleAutoLogin();
+  }, []);
+  return (
+    <div>
+      <header>
+        <SiteNavigation />
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer>Copyright 2024</footer>
+    </div>
+  );
+};
+
+Layout.propTypes = {};
+
+export default Layout;

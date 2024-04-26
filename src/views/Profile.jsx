@@ -1,34 +1,32 @@
-import { Link } from "react-router-dom"
-import {useUser} from "../hooks/ApiHooks.js";
-import {useEffect, useState} from "react";
+import { useEffect } from "react";
+import { useUser } from "../hooks/ApiHooks.js";
+import { useUserContext } from "../contexts/UserContext.jsx";
+import UserData from "../components/UserData.jsx";
 
 export const Profile = () => {
-  const [user, setUser] = useState(null);
-  const {getUserByToken} = useUser();
-  const getUser = async () => {
-    try {
-      const token = localStorage.getItem('token')
-      const userData = await getUserByToken(token)
-      setUser(userData.user)
-    } catch (e) {
-      alert(e.message)
-    }
-  }
-  useEffect(() => {
-    getUser();
-  }, [])
-  return <div>
-    <h2>Tämä on minun profiilisivu</h2>
+const { setUser } = useUserContext(null);
+const { getUserByToken } = useUser();
 
-    <p>
-      <Link to="/">Navigoi takaisin etusivulle</Link>
-    </p>
+const getUser = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    const userData = await getUserByToken(token);
+    setUser(userData.user);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+useEffect(() => {
+  getUser();
+}, []);
+
+return (
+  <>
+    Tämä on Profiilisivu
     <div>
-      {user &&
-      <p>
-        Käyttäjänimi: {user.username}
-      </p>
-      }
+      <UserData />
     </div>
-  </div>
-}
+  </>
+);
+};
