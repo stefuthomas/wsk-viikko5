@@ -10,6 +10,7 @@ const { getUserByToken } = useUser();
 const getUser = async () => {
   try {
     const token = localStorage.getItem("token");
+    console.log(token)
     const userData = await getUserByToken(token);
     setUser(userData.user);
   } catch (e) {
