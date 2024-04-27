@@ -36,7 +36,7 @@ const Upload = () => {
     try {
       const fileData = await postFile(file, token);
       await postMedia(fileData.data, inputs, token);
-      return <Navigate to={"/"} />
+      return<Navigate to={"/"} />
     } catch (e) {
       console.log(e.message);
     }

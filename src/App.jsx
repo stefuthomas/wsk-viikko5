@@ -12,7 +12,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <UserProvider>
         <HandleAutoLogin />
         <Routes>
